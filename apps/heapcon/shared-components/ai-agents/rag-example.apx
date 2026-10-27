@@ -1,0 +1,41 @@
+aiAgent rag-example (
+    name: RAG example
+    genAI {
+        service: @LOCAL_GRANITE
+        systemPrompt: Answer using the retrieved passages; if they do not support an answer, say so
+        welcomeMessage: Hi, I am your friendly AI Agent. Ask me anything about the official Oracle Documentation set. I will use the uploaded knowledge source for additional context
+    }
+
+    tool retrieval (
+        name: retrieval
+        type: retrieveData
+        executionPoint: onDemand
+        description: Search the approved product documentation for passages relevant to the user’s question. Use this for product and policy questions.
+        settings {
+            dataDescription: Retrieves the document's primary key, the document title, a 500 character description, and the vector distance from the vector-search search configuration. Contains excerpts from the documentation uploaded into the database
+            sqlQuery:
+                ```sql
+                select
+                    primary_key_1 as source_id,
+                    title,
+                    substr(description, 1, 500) as description,
+                    distance
+                from
+                    table(apex_search.search(
+                            p_search_static_ids => apex_t_varchar2( 'vector-search' ),
+                            p_search_expression => 'oracle APEX' ) 
+                    )
+                order by
+                    distance
+                fetch first 5 rows only
+                ```
+        }
+
+        parameter SEARCH_TEXT (
+            description: the text to search for
+        )
+
+    )
+
+)
+

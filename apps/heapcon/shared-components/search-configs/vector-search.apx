@@ -1,0 +1,23 @@
+searchConfig vector-search (
+    name: Vector-Search
+    type: vector
+    source {
+        tableName: KNOWLEDGE_SEARCH
+    }
+    vectorAttributes {
+        provider: @LOCAL_ONNX_EMBEDDINGS
+        columnName: CHUNK_EMBEDDING
+    }
+    columnMapping {
+        primaryKey1Column: CHUNK_ID
+        titleColumn: DOCUMENT_TITLE
+        descriptionColumn: CHUNK_DATA
+    }
+    iconAndBadge {
+        iconSource: initials
+    }
+    performance {
+        maxRowsToReturn: 10
+    }
+)
+
