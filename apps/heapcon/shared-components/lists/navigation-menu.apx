@@ -38,6 +38,25 @@ list navigation-menu (
         }
     )
 
+    entry rag-search (
+        label: RAG Search
+        icon {
+            imageIconCssClasses: fa-comments
+        }
+        layout {
+            sequence: 40
+        }
+        isCurrent {
+            type: pages
+            pages: 7
+        }
+        link {
+            target: {
+                page: 7
+            }
+        }
+    )
+
     entry vector-search (
         label: Vector Search
         icon {

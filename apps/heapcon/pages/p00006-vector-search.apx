@@ -94,34 +94,5 @@ page 6 (
         }
     )
 
-    button show-ai-assistant_1 (
-        buttonName: show-ai-assistant
-        label: Show AI Assistant
-        layout {
-            sequence: 30
-            slot: body
-            startNewRow: false
-        }
-        appearance {
-            buttonTemplate: @/text
-            templateOptions: #DEFAULT#
-        }
-        behavior {
-            action: triggerAction
-        }
-
-        triggerAction native-open-ai-assistant (
-            action: showAiAssistant
-            genAI {
-                agent: @rag-example
-                itemsToSubmit: P6_SEARCH
-            }
-            execution {
-                sequence: 10
-            }
-        )
-
-    )
-
 )
 

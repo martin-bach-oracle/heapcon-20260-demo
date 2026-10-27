@@ -27,6 +27,19 @@ breadcrumb breadcrumb (
         }
     )
 
+    entry rag-search (
+        name: RAG Search
+        pageNumber: 7
+        execution {
+            sequence: 10
+        }
+        link {
+            target: {
+                page: 7
+            }
+        }
+    )
+
     entry vector-search (
         name: Vector Search
         pageNumber: 6

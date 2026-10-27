@@ -1,8 +1,3 @@
-file "images/gendevrealms-modern.png" (
-    mimeType: image/png
-    charSet: utf-8
-)
-
 file "icons/app-icon-144-rounded.png" (
     mimeType: image/png
     charSet: utf-8
@@ -24,6 +19,11 @@ file "icons/app-icon-32.png" (
 )
 
 file "icons/app-icon-512.png" (
+    mimeType: image/png
+    charSet: utf-8
+)
+
+file "images/gendevrealms-modern.png" (
     mimeType: image/png
     charSet: utf-8
 )

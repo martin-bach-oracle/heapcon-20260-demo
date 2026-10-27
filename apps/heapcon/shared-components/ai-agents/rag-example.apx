@@ -23,7 +23,7 @@ aiAgent rag-example (
                 from
                     table(apex_search.search(
                             p_search_static_ids => apex_t_varchar2( 'vector-search' ),
-                            p_search_expression => 'oracle APEX' ) 
+                            p_search_expression => :search_text )
                     )
                 order by
                     distance

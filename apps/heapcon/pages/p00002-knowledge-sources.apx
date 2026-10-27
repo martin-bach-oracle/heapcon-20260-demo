@@ -7,6 +7,27 @@ page 2 (
         templateOptions: #DEFAULT#
     }
 
+    region about-this-page (
+        name: About this page
+        type: staticContent
+        source {
+            htmlCode:
+                ```html
+                <p>Use this page to upload PDFs into the database. They should be from the same problem domain, like, for example, Oracle AI Database 26ai documentation.</p>
+                <p>Once loaded, click on the <em>chunk-and-vectorise</em> button to create chunks and vector embeddings inside the database. The provided ONNX model, a sentence transformer, takes care of that step. Depending on the data volume it might take a while for the process to finish</p>
+                ```
+        }
+        layout {
+            sequence: 10
+            slot: body
+        }
+        appearance {
+            template: @/hero
+            templateOptions: #DEFAULT#
+            icon: fa-info-circle-o
+        }
+    )
+
     region breadcrumb (
         name: Breadcrumb
         type: breadcrumb
@@ -38,7 +59,7 @@ page 2 (
             tableName: DOCUMENTATION_TAB
         }
         layout {
-            sequence: 10
+            sequence: 20
             slot: body
         }
         appearance {

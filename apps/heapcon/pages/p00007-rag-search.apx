@@ -1,0 +1,105 @@
+page 7 (
+    name: RAG Search
+    alias: RAG-SEARCH
+    title: RAG Search
+    appearance {
+        pageTemplate: @/standard
+        templateOptions: #DEFAULT#
+    }
+
+    region breadcrumb (
+        name: Breadcrumb
+        type: breadcrumb
+        source {
+            breadcrumb: @breadcrumb
+        }
+        layout {
+            sequence: 10
+            slot: breadcrumbBar
+        }
+        appearance {
+            template: @/title-bar
+            templateOptions: [
+                #DEFAULT#
+                t-BreadcrumbRegion--useBreadcrumbTitle
+            ]
+        }
+        componentAppearance {
+            breadcrumbTemplate: @/breadcrumb
+            templateOptions: #DEFAULT#
+        }
+    )
+
+    region rag-chat (
+        name: Knowledge Base Chat
+        type: staticContent
+        layout {
+            sequence: 30
+            slot: body
+        }
+        appearance {
+            template: @/blank-with-attributes
+            templateOptions: #DEFAULT#
+            cssClasses: rag-chat-container
+        }
+    )
+
+    region rag-introduction (
+        name: Search Your Documents
+        type: staticContent
+        source {
+            htmlCode:
+                ```html
+                <p>This page uses Retrieval Augmented Generation using information retrieved locally via a vector search based on the tables in the database as additional context for the defined AI service
+                </p>
+                ```
+        }
+        layout {
+            sequence: 10
+            slot: body
+        }
+        appearance {
+            template: @/hero
+            templateOptions: #DEFAULT#
+        }
+    )
+
+    button start-rag-chat_1 (
+        buttonName: START_RAG_CHAT
+        label: Start chatting
+        layout {
+            sequence: 20
+            slot: body
+        }
+        appearance {
+            buttonTemplate: @/text-with-icon
+            hot: true
+            templateOptions: [
+                #DEFAULT#
+                t-Button--iconRight
+            ]
+            cssClasses: rag-start-chat
+            icon: fa-comments
+        }
+        behavior {
+            action: triggerAction
+        }
+
+        triggerAction show-inline-rag-assistant (
+            action: showAiAssistant
+            genAI {
+                agent: @rag-example
+            }
+            appearance {
+                displayAs: inline
+                containerSelector: .rag-chat-container
+            }
+            execution {
+                sequence: 10
+            }
+        )
+
+    )
+
+)
+
