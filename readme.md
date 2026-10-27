@@ -61,7 +61,7 @@ flowchart LR
 
 ## Demo steps
 
-Prerequisites: environment has been set up, ONNX model is loaded and working.
+Prerequisites: environment has been set up, ONNX model is loaded and working. A saved connection exists in VSCode allowing the SQLcl MCP server to connect to the dev database.
 
 ### Application Walkthrough
 
@@ -91,7 +91,27 @@ Switch to VS Code for the remainder of the demo.
 
 Introduce a possible change workflow:
 
-1. Create a new GitHub issue
+1. Use the database MCP server to learn more about the application
+
+    - Connect to the database using these prompts:
+
+    ```text
+   List all my database connections
+    ```
+
+    And
+
+   ```text
+   Connect to the database using <connection name>. Once connected, tell me more about the DOCUMENTATION_TAB and DOC_CHUNKS table. What are their purposes?
+   ```
+
+   Let's perform a semantic search using natural language
+
+   ```text
+   Can you run a semantic search using the vector embeddings stored in doc_chunks? I want to see hits matching the search term "MLE". After successful completion, show me the query used. If there are multiple embedding models available, make me choose one.
+   ```
+
+3. Create a new GitHub issue
 
    Use the GitHub MCP Server and this prompt:
 
@@ -101,7 +121,7 @@ Introduce a possible change workflow:
 
    Verify that the issue was created and assigned correctly.
 
-2. Create a local branch and implement the change
+4. Create a local branch and implement the change via a pull request
 
    - Name the branch after the issue, for example `issue-<number>`.
    - Ask Codex to create and switch to that branch:
@@ -110,20 +130,22 @@ Introduce a possible change workflow:
      Create a local branch named after the newly created issue and switch to it.
      ```
 
-   - Ask Codex to make the change on APEX Page 2:
+   - Continue _only_ if VSCode indicates that the new branch is active.
+   - Ask Codex to make the change on APEX Page 2. It should tell us that it uses the APEX skill to do so:
 
      ```text
      On APEX Page 2, change the "Chunk and vectorise" button to the "Text with Icon" type. Turn off the Hot setting and add the fa-cubes icon.
      ```
 
-   - Review the changes before publishing the branch.
-   - If the changes look good, ask Codex to publish the branch and create a GitHub pull request:
+   - Review the changes in VSCode; the APEXlang file should allow for an easy, side-by-side comparison.
+   - Import the application using the VSCode plugin. Login to the app and show the changed button.
+   - If the changes look good, ask Codex to stage and commit them, then publish the branch and create a GitHub pull request:
 
      ```text
-     Publish the branch to GitHub and create a pull request. First explain the actions you propose, then wait for my approval before proceeding.
+     Stage and commit the changed files. Once committed, publish the branch to GitHub and create a pull request. Make sure to link to the previously created issue, stating that the fix closes it. First explain the actions you propose, then wait for my approval before proceeding.
      ```
 
-   - Review the pull request. The APEXlang diff makes it easy to see which components changed.
+   - Review the pull request. Again, the APEXlang format makes it easy to see which components changed.
    - Manually approve the pull request and watch the CI workflow validate the APEX application.
 
 ### Wrap Up
