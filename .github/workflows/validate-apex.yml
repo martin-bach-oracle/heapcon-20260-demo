@@ -1,0 +1,43 @@
+name: Validate APEX application
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up SQLcl
+        uses: gvenzl/setup-oracle-sqlcl@v1
+
+      - name: Validate APEX application
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if validation_output=$(sql /nolog 2>&1 <<'SQLCL_COMMANDS'
+          apex validate -input apps/heapcon
+          exit
+          SQLCL_COMMANDS
+          ); then
+            validation_status=0
+          else
+            validation_status=$?
+          fi
+
+          printf '%s\n' "$validation_output"
+
+          # SQLcl may return status 0 even when APEXlang compilation has errors.
+          if [[ $validation_status -ne 0 ]] ||
+             ! grep -Fq 'Validation successful' <<<"$validation_output"; then
+            echo 'APEX application validation failed.' >&2
+            exit 1
+          fi
