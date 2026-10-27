@@ -23,5 +23,22 @@ page 1 (
         }
     )
 
+    region about-app (
+        name: About this app
+        title: About this app
+        type: staticContent
+        source {
+            htmlCode: <p>This app demonstrates how Oracle APEX and Oracle AI Database can prepare documents for semantic search. Upload PDF documents, split them into chunks, generate vector embeddings, and search the documents by meaning.</p><p>Use <strong>Knowledge Sources</strong> to upload and process PDFs, then open <strong>Vector Search</strong> to find relevant passages.</p><p>The app serves as a playground for APEX Generative AI Development.</p><p><img src="#APP_FILES#images/gendevrealms-modern.png" alt="Oracle Gen Dev Realms" style="max-width: 75%; height: auto;"></p>
+        }
+        layout {
+            sequence: 20
+            slot: body
+        }
+        appearance {
+            template: @/standard
+            templateOptions: #DEFAULT#
+        }
+    )
+
 )
 
