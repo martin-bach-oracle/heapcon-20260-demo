@@ -1,0 +1,131 @@
+# Heapcon 2026 Demo Repository
+
+This demo repository accompanies the presentation titled "MCP Supercharges APEX: Less Clicking, More Kicking — Straight to Git Push Done"
+
+It is part of [Heapcon 2026](https://heapcon.io/2026/speakers/martin-bach-sonja-meyer) and demonstrates the use of AI coding agents for low-code applications, according to this abstract.
+
+## MCP Supercharges APEX: Less Clicking, More Kicking — Straight to Git Push Done
+
+Modern development teams need more than fast UI creation: they need Git-based workflows, clean CI/CD pipelines, reproducible deployments and reliable engineering practices. Low-code is growing up — from rapid prototyping to real software delivery.
+
+With MCP and AI-powered workflows, low-code becomes not only faster, but also smarter and more resilient. This session focuses on live demos: APEX apps in plain text, versioned in Git, tested automatically, deployed through pipelines and supported by intelligent language-model workflows. Instead of slides, you’ll see how SQLcl, APEXlang, Podman and MCP turn low-code into a real development flow that cuts repetitive work, boosts quality and frees teams to build better solutions.
+
+## Implementation
+
+The code relies on the following Oracle stack:
+
+- [Oracle AI Database 26ai](https://www.oracle.com/database/) 23.26.3 or later
+- [Oracle APEX](https://apex.oracle.com) 26.2 and later
+
+A compose file starts the entire stack, initialises the database, and installs APEX.
+
+Once started, an ONNX model is loaded into the database. It is the `sentence-transformers/all-MiniLM-L12-v2` sentence-transformer model, used to create text embeddings. It turns text into a 384-dimensional vector, which can be used to find text with similar meaning—for example, matching a search query to relevant documents even when they do not use the same words. The APEX app uses this model to prepare document chunks and search queries.
+
+The APEX application lets users upload PDFs into the database. They can then split the PDFs into chunks and generate vector embeddings for those chunks. The database stores both the chunks and their embeddings.
+
+A vector search page allows you to use semantic search within these uploaded documents.
+
+## Demo
+
+The demo uses AI agents, MCP servers, and skills. During the presentation, it used:
+
+- Oracle AI Database and APEX, running in containers
+- Visual Studio Code (VSCode)
+- Codex plugin
+- Skills as per the [Oracle _skills_ repository](https://www.github.com/oracle/skills)
+- A local MCP server, based on the SQL Developer extension for VS Code, to communicate with the database
+- The GitHub MCP Server to interact with the repository using natural language
+
+The diagram shows how the user-facing APEX application and the coding-agent workflow connect to the database and repository:
+
+```mermaid
+flowchart LR
+    User --> Browser[Web browser]
+    Browser --> APEX[Oracle APEX application]
+    User --> VSCode[Visual Studio Code]
+    VSCode --> Codex[Codex plugin]
+    Codex --> Skills[Oracle skills repository]
+    Codex --> DBMCP[Local database MCP server]
+    Codex --> GitMCP[GitHub MCP Server]
+    GitMCP --> GitHub[GitHub repository]
+
+    DBMCP --> Database
+    subgraph Runtime[Container stack]
+        APEX -->|PDF upload| Documents[DOCUMENTATION_TAB]
+        APEX -->|Search query| Database[Oracle AI Database 26ai]
+        Database -->|Matching chunks| APEX
+    end
+
+    Compose[Compose file] --> Runtime
+```
+
+## Demo steps
+
+Prerequisites: environment has been set up, ONNX model is loaded and working.
+
+### Application Walkthrough
+
+Open the APEX runtime, log in, and run the _Heapcon_ application.
+
+1. Prepare documents for vector search
+
+   - Show the vector provider _LOCAL_ONNX_EMBEDDINGS_ in _Workspace Utilities_.
+   - In _Knowledge Sources_, upload a couple of PDFs from the Oracle documentation set.
+   - Click **Chunk and vectorise** to create chunks and embeddings in the database.
+   - In Object Browser, show the chunks and embeddings in `DOC_CHUNKS`.
+
+2. Try semantic search
+
+   - Open _Vector Search_.
+   - Enter a search term.
+   - Review the semantic search results.
+
+### CI/CD demo
+
+Switch to VS Code for the remainder of the demo.
+
+- Walk through the APEXlang folder structure in `apps/heapcon`.
+- Explain the human-readable format.
+- Show the Oracle database skills.
+- Demonstrate the MCP server configuration in Codex.
+
+Introduce a possible change workflow:
+
+1. Create a new GitHub issue
+
+   Use the GitHub MCP Server and this prompt:
+
+   ```text
+   Create a GitHub issue requesting that the "Chunk and vectorise" button use the "Text with Icon" button type, is not marked hot, and displays the fa-cubes icon. Assign the issue to martin-bach-oracle. First explain the actions you propose, then wait for my approval before creating the issue.
+   ```
+
+   Verify that the issue was created and assigned correctly.
+
+2. Create a local branch and implement the change
+
+   - Name the branch after the issue, for example `issue-<number>`.
+   - Ask Codex to create and switch to that branch:
+
+     ```text
+     Create a local branch named after the newly created issue and switch to it.
+     ```
+
+   - Ask Codex to make the change on APEX Page 2:
+
+     ```text
+     On APEX Page 2, change the "Chunk and vectorise" button to the "Text with Icon" type. Turn off the Hot setting and add the fa-cubes icon.
+     ```
+
+   - Review the changes before publishing the branch.
+   - If the changes look good, ask Codex to publish the branch and create a GitHub pull request:
+
+     ```text
+     Publish the branch to GitHub and create a pull request. First explain the actions you propose, then wait for my approval before proceeding.
+     ```
+
+   - Review the pull request. The APEXlang diff makes it easy to see which components changed.
+   - Manually approve the pull request and watch the CI workflow validate the APEX application.
+
+### Wrap Up
+
+This demo combines low-code development with AI agents, MCP servers, and skills. Together, natural-language instructions and a repeatable development workflow reduce routine work and leave more time for features and usability.
