@@ -114,14 +114,15 @@ Introduce a possible change workflow:
    Let's perform a semantic search using natural language
 
    ```text
-   Can you run a semantic search using the vector embeddings stored in doc_chunks? I want to see
-   hits matching the search term "MLE". After successful completion, show me the query used. If
-   there are multiple embedding models available, make me choose one.
+   Can you run a semantic search using the vector embeddings stored in doc_chunks?
+   I want to see hits matching the search term "MLE". After successful completion,
+   show me the query used. If there are multiple embedding models available, make
+   me choose one.
    ```
 
 3. Create a new GitHub issue
 
-   Use the GitHub MCP Server and this prompt to change the look of the _chunk and vectorise_ button.
+   Use the GitHub MCP Server and this prompt to change the look of the _chunk and vectorise_ button. This requires a Personal Access Token with the appropriate privileges.
 
    ```text
    List my GitHub repositories
@@ -149,7 +150,8 @@ Introduce a possible change workflow:
    - Ask Codex to make the change on APEX Page 2. It should tell us that it uses the APEX skill to do so:
 
      ```text
-     On APEX Page 2, change the "Chunk and vectorise" button to the "Text with Icon" type. Turn off the Hot setting and add the fa-cubes icon.
+     On APEX Page 2, change the "Chunk and vectorise" button to the "Text with Icon" type. Turn
+     off the Hot setting and add the fa-cubes icon.
      ```
 
    - Review the changes in VSCode; the APEXlang file should allow for an easy, side-by-side comparison.
@@ -157,7 +159,9 @@ Introduce a possible change workflow:
    - If the changes look good, ask Codex to stage and commit them, then publish the branch and create a GitHub pull request:
 
      ```text
-     Stage and commit the changed files. Once committed, publish the branch to GitHub and create a pull request. Make sure to link to the previously created issue, stating that the fix closes it. First explain the actions you propose, then wait for my approval before proceeding.
+     Stage and commit the changed files. Once committed, publish the branch to GitHub and create a
+     pull request. Make sure to link to the previously created issue, stating that the fix closes it.
+     First explain the actions you propose, then wait for my approval before proceeding.
      ```
 
    - Review the pull request. Again, the APEXlang format makes it easy to see which components changed.
