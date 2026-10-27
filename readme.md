@@ -86,7 +86,12 @@ Switch to VS Code for the remainder of the demo.
 
 - Walk through the APEXlang folder structure in `apps/heapcon`.
 - Explain the human-readable format.
-- Show the Oracle database skills.
+- Show the Oracle database skills using this prompt:
+
+```text
+Show me all currently available skills
+```
+
 - Demonstrate the MCP server configuration in Codex.
 
 Introduce a possible change workflow:
@@ -102,26 +107,36 @@ Introduce a possible change workflow:
     And
 
    ```text
-   Connect to the database using <connection name>. Once connected, tell me more about the DOCUMENTATION_TAB and DOC_CHUNKS table. What are their purposes?
+   Connect to the database using <connection name>. Once connected, tell me more about
+   the DOCUMENTATION_TAB and DOC_CHUNKS table. What are their purposes?
    ```
 
    Let's perform a semantic search using natural language
 
    ```text
-   Can you run a semantic search using the vector embeddings stored in doc_chunks? I want to see hits matching the search term "MLE". After successful completion, show me the query used. If there are multiple embedding models available, make me choose one.
+   Can you run a semantic search using the vector embeddings stored in doc_chunks? I want to see
+   hits matching the search term "MLE". After successful completion, show me the query used. If
+   there are multiple embedding models available, make me choose one.
    ```
 
 3. Create a new GitHub issue
 
-   Use the GitHub MCP Server and this prompt:
+   Use the GitHub MCP Server and this prompt to change the look of the _chunk and vectorise_ button.
 
    ```text
-   Create a GitHub issue requesting that the "Chunk and vectorise" button use the "Text with Icon" button type, is not marked hot, and displays the fa-cubes icon. Assign the issue to martin-bach-oracle. First explain the actions you propose, then wait for my approval before creating the issue.
+   List my GitHub repositories
+   ```
+
+   ```text
+   Create a GitHub issue in heapcon-20260-demo requesting that the "Chunk and vectorise" button
+   use the "Text with Icon" button type, is not marked hot, and displays the fa-cubes icon.
+   Assign the issue to martin-bach-oracle | orasonjameyer. First explain the actions you propose,
+   then wait for my approval before creating the issue.
    ```
 
    Verify that the issue was created and assigned correctly.
 
-4. Create a local branch and implement the change via a pull request
+5. Create a local branch and implement the change via a pull request
 
    - Name the branch after the issue, for example `issue-<number>`.
    - Ask Codex to create and switch to that branch:
