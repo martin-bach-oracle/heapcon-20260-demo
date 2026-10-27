@@ -139,9 +139,13 @@ page 2 (
             slot: change
         }
         appearance {
-            buttonTemplate: @/text
-            hot: true
-            templateOptions: #DEFAULT#
+            buttonTemplate: @/text-with-icon
+            hot: false
+            icon: fa-cubes
+            templateOptions: [
+                #DEFAULT#
+                t-Button--iconLeft
+            ]
         }
         behavior {
             action: triggerAction
