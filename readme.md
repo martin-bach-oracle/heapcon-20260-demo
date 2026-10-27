@@ -117,9 +117,10 @@ Introduce a possible workflow for CI/CD with APEXlang:
    Let's perform a semantic search using natural language
 
    ```text
-   Can you run a semantic search using the vector embeddings stored in doc_chunks? I want to see
-   hits matching the search term "MLE". After successful completion, show me the query used. If
-   there are multiple embedding models available, make me choose one.
+   Can you run a semantic search using the vector embeddings stored in doc_chunks?
+   I want to see hits matching the search term "MLE". After successful completion,
+   show me the query used. If there are multiple embedding models available, make
+   me choose one.
    ```
 
 2. Create a new GitHub issue
@@ -131,10 +132,10 @@ Introduce a possible workflow for CI/CD with APEXlang:
    ```
 
    ```text
-   Create a GitHub issue in heapcon-20260-demo requesting that the "Chunk and vectorise" button
-   use the "Text with Icon" button type, is not marked hot, and displays the fa-cubes icon. Its
-   colour should be purple. Assign the issue to martin-bach-oracle. First explain the actions you
-   propose, then wait for approval before creating the issue.
+   Create a GitHub issue in heapcon-20260-demo requesting that the "Chunk and vectorise"
+   button use the "Text with Icon" button type, is not marked hot, and displays the
+   fa-cubes icon. Its colour should be purple. Assign the issue to martin-bach-oracle.
+   First explain the actions you propose, then wait for approval before creating the issue.
    ```
 
    Verify that the issue was created in GitHub and assigned correctly.
