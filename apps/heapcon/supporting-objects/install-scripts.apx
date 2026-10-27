@@ -1,0 +1,9 @@
+installScript install (
+    execution {
+        sequence: 10
+    }
+    script {
+        contentFile: install.sql
+    }
+)
+

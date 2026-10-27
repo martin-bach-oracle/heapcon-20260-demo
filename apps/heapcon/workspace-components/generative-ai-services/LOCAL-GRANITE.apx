@@ -1,0 +1,16 @@
+genAIService LOCAL_GRANITE (
+    name: Local Granite Playground
+    provider: genericOpenaiApiCompatible
+    endpointUrl {
+        url: http://llama:8080/v1
+    }
+    appBuilder {
+        usedByAppBuilder: true
+    }
+    advanced {
+        modelName: ibm-granite/granite-4.1-3b-GGUF:Q4_K_M
+        serverTimeout: 120
+        providerApi: responses
+    }
+)
+

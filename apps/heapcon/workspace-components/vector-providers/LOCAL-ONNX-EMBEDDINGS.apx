@@ -1,0 +1,8 @@
+vectorProvider LOCAL_ONNX_EMBEDDINGS (
+    name: LOCAL_ONNX_EMBEDDINGS
+    type: databaseOnnxModel
+    localEmbedding {
+        modelName: GENDEV.ALL_MINILM_L12_V2
+    }
+)
+
