@@ -77,7 +77,7 @@ Open the APEX runtime, log in, and run the _Heapcon_ application.
 2. Try semantic search
 
    - Open _Semantic Search_.
-   - Enter a search term for example: JavaScript.
+   - Enter a search term for example: _JavaScript_.
    - Review the semantic search results.
 
 This concludes the first part.
