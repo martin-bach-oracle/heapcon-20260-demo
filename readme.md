@@ -94,7 +94,7 @@ Switch to VS Code for the remainder of the demo. Get the lay of the land first.
    Show me all currently available skills
    ```
 
-- Then use codex settings to do the same.
+- Then show codex settings where skills are listed: Settings / MCP and Settings / Plugins 7 Skills.
 - Demonstrate the MCP server configuration in Codex.
 
 The stage is set, time to get to work.
