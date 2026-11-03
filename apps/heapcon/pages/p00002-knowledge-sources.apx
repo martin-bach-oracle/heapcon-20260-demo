@@ -6,6 +6,24 @@ page 2 (
         pageTemplate: @/standard
         templateOptions: #DEFAULT#
     }
+    css {
+        inline:
+            ```css
+            .t-Button.chunk-and-vectorise {
+                background-color: #7b2cbf;
+                color: #fff;
+                border-radius: 0.5rem;
+                font-size: 0.9375rem;
+            }
+
+            .t-Button.chunk-and-vectorise:hover,
+            .t-Button.chunk-and-vectorise:focus,
+            .t-Button.chunk-and-vectorise:active {
+                background-color: #6823a2;
+                color: #fff;
+            }
+            ```
+    }
 
     region about-this-page (
         name: About this page
@@ -160,9 +178,14 @@ page 2 (
             slot: change
         }
         appearance {
-            buttonTemplate: @/text
-            hot: true
-            templateOptions: #DEFAULT#
+            buttonTemplate: @/text-with-icon
+            hot: false
+            templateOptions: [
+                #DEFAULT#
+                t-Button--iconLeft
+            ]
+            cssClasses: chunk-and-vectorise
+            icon: fa-cubes
         }
         behavior {
             action: triggerAction
