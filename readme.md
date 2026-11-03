@@ -94,8 +94,8 @@ Switch to VS Code for the remainder of the demo. Get the lay of the land first.
    Show me all currently available skills
    ```
 
-- Then show codex settings where skills are listed: Settings / MCP and Settings / Plugins 7 Skills.
-- Demonstrate the MCP server configuration in Codex.
+- Then show codex settings where skills are listed: _Settings / MCP_ and _Settings / Plugins / Skills_.
+
 
 The stage is set, time to get to work.
 
@@ -110,7 +110,7 @@ The stage is set, time to get to work.
     - With the connections listed, pick the one suitable for this demo and take a note. It's needed in the next step
 
       ```text
-      Connect to the database using <connection name>. Once connected, tell me more about
+      Connect to the database using GENDEV Playground. Once connected, tell me more about
       the DOCUMENTATION_TAB and DOC_CHUNKS table. What are their purposes?
       ```
 
