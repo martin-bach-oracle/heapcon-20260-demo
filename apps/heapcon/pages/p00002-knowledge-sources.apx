@@ -180,6 +180,7 @@ page 2 (
                     END;
                     
                     ```
+                showProcessing: true
             }
             execution {
                 sequence: 10
