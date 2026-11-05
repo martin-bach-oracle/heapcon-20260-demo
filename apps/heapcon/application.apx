@@ -16,8 +16,9 @@ app HEAPCON (
         listTemplate: @/side-navigation-menu
         templateOptions: [
             #DEFAULT#
-            t-TreeNav--styleA
+            js-defaultCollapsed
             js-navCollapsed--hidden
+            t-TreeNav--styleA
         ]
         list: @navigation-menu
     }
