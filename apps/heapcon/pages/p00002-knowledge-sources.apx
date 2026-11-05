@@ -2,6 +2,24 @@ page 2 (
     name: Knowledge Sources
     alias: KNOWLEDGE-SOURCES
     title: Knowledge Sources
+    css {
+        inline:
+            ```css
+            .t-Button.chunk-and-vectorise-button {
+                background-color: #7b2cbf;
+                color: #fff;
+                border-radius: 9999px;
+                font-size: 0.9375rem;
+            }
+
+            .t-Button.chunk-and-vectorise-button:hover,
+            .t-Button.chunk-and-vectorise-button:focus,
+            .t-Button.chunk-and-vectorise-button:active {
+                background-color: #6823a2;
+                color: #fff;
+            }
+            ```
+    }
     appearance {
         pageTemplate: @/standard
         templateOptions: #DEFAULT#
@@ -160,9 +178,14 @@ page 2 (
             slot: change
         }
         appearance {
-            buttonTemplate: @/text
-            hot: true
-            templateOptions: #DEFAULT#
+            buttonTemplate: @/text-with-icon
+            hot: false
+            templateOptions: [
+                #DEFAULT#
+                t-Button--iconLeft
+            ]
+            cssClasses: chunk-and-vectorise-button
+            icon: fa-cubes
         }
         behavior {
             action: triggerAction
