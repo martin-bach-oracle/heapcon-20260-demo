@@ -139,7 +139,7 @@ The stage is set, time to get to work.
       ```text
       Create a GitHub issue in heapcon-20260-demo requesting that the "Chunk and vectorise"
       button use the "Text with Icon" button type, is not marked hot, and displays the
-      fa-cubes icon. Its colour should be purple. Assign the issue to martin-bach-oracle.
+      fa-cubes icon. Its colour should be purple. Assign the issue to orasonjameyer.
       First explain the actions you propose, then wait for approval before creating the issue.
       ```
 
