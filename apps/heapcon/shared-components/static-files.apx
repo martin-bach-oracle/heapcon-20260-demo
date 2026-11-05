@@ -28,3 +28,8 @@ file "images/gendevrealms-modern.png" (
     charSet: utf-8
 )
 
+file "images/heapcon-logo.png" (
+    mimeType: image/png
+    charSet: utf-8
+)
+
